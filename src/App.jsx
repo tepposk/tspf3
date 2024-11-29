@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import './main.css';
 import Post from './Post.jsx';
-import Icon_email from './assets/email_icon.svg';
 import Trackem_casestudy from './assets/Trackem_casestudy.jpg';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 
-import Test from "./Test.jsx";
+import Home from "./Home.jsx";
+import ProjectPage from "./ProjectPage.jsx";
 import Hero from "./Hero.jsx";
 import About from "./About.jsx";
 import Skills from "./Skills.jsx";
@@ -12,7 +13,9 @@ import Projects from "./Projects.jsx";
 import Contact from "./Contact.jsx";
 import Footer from "./Footer.jsx";
 
-import MenuIcon from "./components/MenuIcon.jsx";
+import Menu from "./components/Menu.jsx";
+
+import Icon_Email from "./assets/contact_email.svg";
 
 function formatWpString(data) {
   return (
@@ -24,26 +27,27 @@ function formatWpString(data) {
 export default function App() {
 
   const [loading, setLoading] = useState(true);
-  const [posts, setPosts] = useState([]);
+  const [projects, setProjects] = useState([]);
   const [pages, setPages] = useState([]);
   const [about, setAbout] = useState("");
   const [skills, setSkills] = useState([]);
+  /* const [openProject, setOpenProject] = useState(false); */
 
   useEffect(() => {
     async function loadData() {
       const pagesResponse = await fetch('http://www.tepposaarikoski.fi/wp/wp-json/wp/v2/pages');
-      const postsResponse = await fetch('http://www.tepposaarikoski.fi/wp/wp-json/wp/v2/posts');
-      if (!pagesResponse.ok || !postsResponse.ok) {
+      const projectsResponse = await fetch('http://www.tepposaarikoski.fi/wp/wp-json/wp/v2/posts');
+      if (!pagesResponse.ok || !projectsResponse.ok) {
         console.log("something went wrong :(");
         return;
       }
 
       const pages = await pagesResponse.json();
-      const posts = await postsResponse.json();
+      const projects = await projectsResponse.json();
       setPages(pages);
-      setPosts(posts);
-      setLoading(false);
-
+      setProjects(projects);
+/*       setLoading(false);
+ */
       const parseContent = () => {
         const skills = [];
         pages.forEach(p => {
@@ -72,17 +76,23 @@ export default function App() {
         Loading
       </div>
     )
-  } else {
+  }
+  else {
     return (
-      <div>
-        <MenuIcon />
-        <Hero />
-        <About data={about} />
-        <Skills skills={skills} />
-        <Projects />
-        <Contact />
+      <BrowserRouter>
+        <Menu />
+        <Routes>
+          <Route exact path="/" element={<Home about={about} skills={skills} projects={projects} />} />
+          {
+            projects.map(p => {
+              return (
+                <Route key={p.id} path={`/case/${p.slug}`} element={<ProjectPage projects={p} />} />
+              )
+            })
+          }
+        </Routes>
         <Footer />
-      </div>
+      </BrowserRouter>
     )
   }
 };

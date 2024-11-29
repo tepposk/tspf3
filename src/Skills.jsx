@@ -45,7 +45,7 @@ export default function Skills(props) {
                         }
                     })}
                 </div>
-                <div className="skill-carousel-content align-left" dangerouslySetInnerHTML={{ __html: activeText }}>
+                <div className="skill-carousel-content" dangerouslySetInnerHTML={{ __html: activeText }}>
                 </div>
             </div>
         </div>
