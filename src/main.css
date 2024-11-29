@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Zilla+Slab:wght@700&display=swap');
 
-* {
+/* * {
   margin: 0;
   padding: 0;
   border: 0;
   outline: 0;
   vertical-align: baseline;
   background: transparent;
-}
+} */
 
 :root {
   --header: 700 4rem 'Zilla Slab', 'Rockwell', 'Rockwell Nova', 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif;
@@ -44,7 +44,6 @@ html {
 body {
   font: var(--primary-text);
   color: white;
-  max-width: 2560px;
   margin: 0 auto;
 }
 
@@ -63,7 +62,8 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  /* height: 100%; */
+  width: 100vw;
+  max-width: 1920px;
   z-index: 0;
   background-color: #25292a;
 }
@@ -99,6 +99,7 @@ body {
   height: 100%;
   width: 100%;
   pointer-events: none;
+  max-height: 100vh;
 }
 
 #teppo {
@@ -153,6 +154,7 @@ body {
   margin-top: 1em;
   font-size: 2rem;
   visibility: hidden;
+  z-index: 2;
 }
 
 .arrow {
@@ -165,7 +167,7 @@ body {
   position: absolute;
   bottom: 100px;
   opacity: 1;
-  transition: .5s ease-out;
+  transition: .5s ease-out
 }
 
 .arrow:hover {
@@ -641,6 +643,10 @@ p a:hover::selection {
     --margin-l: 16px;
   }
 
+  .hero-img {
+    object-position: 66% 100%;
+  }
+  
   .intro {
     margin-left: 0;
   }
@@ -744,6 +750,10 @@ p a:hover::selection {
 
 @media (max-width: 600px) {
 
+  .stroke-text {
+    font-size: 6.4rem;
+  }
+
   #footer {
     flex-direction: column;
     padding: 50px 16px 0 16px;
@@ -783,6 +793,14 @@ p a:hover::selection {
 @media (max-width: 400px) {
   :root {
     --primary-text: 300 2rem Roboto, system-ui, sans-serif;
+  }
+
+  #arrow-hero {
+    bottom: 16px;
+  }
+
+  .stroke-text {
+    font-size: 5.6rem;
   }
 
   #about .note {

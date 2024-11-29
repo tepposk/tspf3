@@ -6,12 +6,18 @@ import "./projectpage.css";
 
 export default function ProjectPage(props) {
 
-
-    
     useEffect(() => {
         document.title = `${props.projects.title.rendered} | Teppo Saarikoski`;
+        function parallaxScroll() {
+            const parallax = document.querySelectorAll('.header-bg');
+            let scrollPosition = window.scrollY;
+            parallax.forEach(e => {
+                e.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+            })
+        }
+        window.addEventListener('scroll', parallaxScroll);
+        return () => window.removeEventListener('scroll', parallaxScroll);
     }, []);
-
 
     const intro = props.projects.excerpt.rendered.replace(/<[^>]*>/g, "");
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Teppo from "./assets/hero_teppo.png";
 import Background from "./assets/hero_bg.jpg";
 import Logo from "./components/Logo.jsx";
@@ -12,7 +12,6 @@ export default function Hero() {
     const [lockIntro, setLockIntro] = useState(2);
     const asterisk = document.getElementById('asterisk');
     const arrowTarget = document.getElementById('about');
-    const arrow = document.getElementById('arrow-hero');
 
     const handleHeroLines = (id) => {
         const line = document.getElementById(`hero-line-${id}`);
@@ -42,28 +41,33 @@ export default function Hero() {
         }
     };
 
-    let userScrolled = false;
-    window.addEventListener('scroll', function () {
-        const parallax = document.querySelectorAll('.hero-img');
-        let scrollPosition = window.scrollY;
-        parallax.forEach(e => {
-            e.style.transform = `translateY(${scrollPosition * 0.3}px)`;
-        })
-
-        if (!userScrolled && scrollPosition > 50) {
-            userScrolled = true;
-            try {
-                arrow.style.opacity = 0;
-                arrow.style.transform = "translateY(-100%)";
-                this.setTimeout(() => {
-                    arrow.style.display = "none";
-                }, 500);
-            } catch {
-                // Prevents the console from printing an error on first scroll before the flag is changed
+    useEffect(() => {
+        let userScrolled = false;
+        const arrow = document.getElementById('arrow-hero');
+        function parallaxScroll() {
+            const parallax = document.querySelectorAll('.hero-img');
+            let scrollPosition = window.scrollY;
+            parallax.forEach(e => {
+                e.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+            })
+            if (scrollPosition > 50) {
+                userScrolled = true;
+                try {
+                    arrow.style.opacity = 0;
+                    arrow.style.transform = "translateY(-100%)";
+                    this.setTimeout(() => {
+                        arrow.style.display = "none";
+                    }, 500);
+                } catch {
+                    // Prevents a console error
+                }
             }
         }
+        window.addEventListener('scroll', parallaxScroll);
+        return () => window.removeEventListener('scroll', parallaxScroll);
+    }, []);
 
-    })
+
 
     return (
         <div id="hero" className="page-section">

@@ -1,15 +1,15 @@
-import ContactItem from "./components/ContactItem.jsx";
-import SomeIconRow from "./components/SomeIconRow.jsx";
-import SomeIcon from "./components/SomeIcon.jsx";
-import Icon_Linkedin from "./assets/some_linkedin.svg";
-import Icon_Dribbble from "./assets/some_dribbble.svg";
-import Icon_Github from "./assets/some_github.svg";
-import Icon_Email from "./assets/contact_email.svg";
-import Icon_Phone from "./assets/contact_phone.svg";
-import Arrow from "./components/Arrow.jsx";
-import Logo from "./components/Logo.jsx";
+import ContactItem from "./ContactItem.jsx";
+import SomeIconRow from "./SomeIconRow.jsx";
+import SomeIcon from "./SomeIcon.jsx";
+import Icon_Linkedin from "../assets/some_linkedin.svg";
+import Icon_Dribbble from "../assets/some_dribbble.svg";
+import Icon_Github from "../assets/some_github.svg";
+import Icon_Email from "../assets/contact_email.svg";
+import Icon_Phone from "../assets/contact_phone.svg";
+import Arrow from "./Arrow.jsx";
+import Logo from "./Logo.jsx";
 
-import Nav from "./components/Nav.jsx";
+import Nav from "./Nav.jsx";
 
 export default function Footer(props) {
 
