@@ -1,4 +1,4 @@
-import Logo_icon from "../assets/logo_mockup.png";
+import Logo_icon from "/assets/logo_mockup.png";
 import { Link } from "react-router-dom";
 
 export default function Logo(props) {

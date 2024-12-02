@@ -4,8 +4,8 @@ import Logo from "./Logo.jsx";
 import Nav from "./Nav.jsx";
 import SomeIconRow from "./SomeIconRow.jsx";
 import ContactItem from "./ContactItem.jsx";
-import Icon_Email from "../assets/contact_email.svg";
-import Icon_Phone from "../assets/contact_phone.svg";
+import Icon_Email from "/assets/contact_email.svg";
+import Icon_Phone from "/assets/contact_phone.svg";
 import "./menu.css";
 
 export default function Menu(props) {

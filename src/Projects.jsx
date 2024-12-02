@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Thumbnail_Trackem from "./assets/trackem_thumbnail_primary.png";
+import Thumbnail_Trackem from "/assets/trackem_thumbnail_primary.png";
 
 export default function Projects(props) {
 

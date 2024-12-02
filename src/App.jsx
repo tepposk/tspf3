@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspence, lazy } from 'react';
+import { useState, useEffect } from 'react';
 import Loading from "./components/Loading.jsx";
 import "./loading.css";
 import './main.css';
@@ -7,15 +7,10 @@ import Home from "./Home.jsx";
 import Menu from "./components/Menu.jsx";
 import ProjectPage from "./ProjectPage.jsx";
 import Footer from "./components/Footer.jsx";
-/* const Home = lazy(() => import("./Home.jsx"));
-const ProjectPage = lazy(() => import("./ProjectPage.jsx"));
-const Menu = lazy(() => import("./components/Menu.jsx"));
-const Footer = lazy(() => import("./components/Footer.jsx")); */
 
 export default function App() {
 
   const [loading, setLoading] = useState(true);
-  //const [loadingMessage, setLoadingMessage] = useState("Loading");
 
   const [projects, setProjects] = useState([]);
   const [pages, setPages] = useState([]);
@@ -24,8 +19,8 @@ export default function App() {
 
   useEffect(() => {
     const loadData = async () => {
-      const pagesResponse = await fetch('http://www.tepposaarikoski.fi/wp/wp-json/wp/v2/pages');
-      const projectsResponse = await fetch('http://www.tepposaarikoski.fi/wp/wp-json/wp/v2/posts');
+      const pagesResponse = await fetch('https://www.tepposaarikoski.fi/wp/wp-json/wp/v2/pages');
+      const projectsResponse = await fetch('https://www.tepposaarikoski.fi/wp/wp-json/wp/v2/posts');
       if (!pagesResponse.ok || !projectsResponse.ok) {
         console.log("something went wrong :(");
         return;
@@ -77,6 +72,7 @@ export default function App() {
               )
             })
           }
+          <Route path="*" element={<Home />} />
         </Routes>
         <Footer />
       </BrowserRouter>

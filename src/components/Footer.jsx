@@ -1,11 +1,11 @@
 import ContactItem from "./ContactItem.jsx";
 import SomeIconRow from "./SomeIconRow.jsx";
 import SomeIcon from "./SomeIcon.jsx";
-import Icon_Linkedin from "../assets/some_linkedin.svg";
-import Icon_Dribbble from "../assets/some_dribbble.svg";
-import Icon_Github from "../assets/some_github.svg";
-import Icon_Email from "../assets/contact_email.svg";
-import Icon_Phone from "../assets/contact_phone.svg";
+import Icon_Linkedin from "/assets/some_linkedin.svg";
+import Icon_Dribbble from "/assets/some_dribbble.svg";
+import Icon_Github from "/assets/some_github.svg";
+import Icon_Email from "/assets/contact_email.svg";
+import Icon_Phone from "/assets/contact_phone.svg";
 import Arrow from "./Arrow.jsx";
 import Logo from "./Logo.jsx";
 

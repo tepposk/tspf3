@@ -1,7 +1,7 @@
 import ContactItem from "./components/ContactItem.jsx";
 
-import Icon_Email from "./assets/contact_email.svg";
-import Icon_Phone from "./assets/contact_phone.svg";
+import Icon_Email from "/assets/contact_email.svg";
+import Icon_Phone from "/assets/contact_phone.svg";
 
 export default function Contact(props) {
 

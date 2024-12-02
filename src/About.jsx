@@ -1,4 +1,4 @@
-import Stickynote from "./assets/sticky_note.png";
+import Stickynote from "/assets/sticky_note.png";
 
 export default function About(props) {
 

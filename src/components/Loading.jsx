@@ -1,6 +1,6 @@
 //import { useState, useEffect } from "react";
-import Logo_placeholder from "../assets/logo_placeholder.png";
-import InitialBg from "../assets/loading_bg.jpg";
+import Logo_placeholder from "/assets/logo_placeholder.png";
+import InitialBg from "/assets/loading_bg.jpg";
 
 export default function Loading(props) {
     /* 

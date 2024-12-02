@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import Teppo from "./assets/hero_teppo.png";
-import Background from "./assets/hero_bg.jpg";
+import Teppo from "/assets/hero_teppo.png";
+import Background from "/assets/hero_bg.jpg";
 import Logo from "./components/Logo.jsx";
 import Arrow from "./components/Arrow";
 

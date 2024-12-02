@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import trackem_header from "./assets/trackem_header.png";
+import trackem_header from "/assets/trackem_header.png";
 import Logo from "./components/Logo.jsx";
 import { useLocation } from "react-router-dom";
 import "./projectpage.css";
