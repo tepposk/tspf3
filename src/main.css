@@ -45,6 +45,7 @@ body {
   font: var(--primary-text);
   color: white;
   margin: 0 auto;
+  overflow-x: hidden;
 }
 
 .align-left {
@@ -167,7 +168,12 @@ body {
   position: absolute;
   bottom: 100px;
   opacity: 1;
-  transition: .5s ease-out
+  transition: .5s ease-out;
+}
+
+#arrow-hero.hide {
+  transform: translateY(-100%);
+  opacity: 0;
 }
 
 .arrow:hover {
@@ -259,7 +265,8 @@ p a:hover::selection {
 .skill-carousel-navigation {
   width: 80%;
   max-width: 950px;
-  place-self: center;
+/*   place-self: center; */
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -273,6 +280,15 @@ p a:hover::selection {
 
 .skill-carousel h2:hover {
   cursor: pointer;
+}
+
+.skill-carousel-content {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.skill-carousel p {
+  
 }
 
 #skills .wp-block-gallery {
@@ -344,7 +360,7 @@ p a:hover::selection {
 }
 
 #trackem-thumbnail-image {
-  background-image: url("./assets/trackem_thumbnail_bg.jpg");
+  background-image: url("/assets/trackem_thumbnail_bg.jpg");
 }
 
 #trackem-thumbnail .project-thumbnail-description:before {
@@ -352,7 +368,7 @@ p a:hover::selection {
 }
 
 .project-thumbnail .thumbnail-primary {
-  background-image: url("./assets/trackem_thumbnail_primary.png");
+  background-image: url("/assets/trackem_thumbnail_primary.png");
   object-fit: cover;
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -597,6 +613,11 @@ p a:hover::selection {
   .skill-carousel-navigation h2 {
     font-size: 3.5rem;
     margin-right: 4rem;
+    display: block;
+  }
+
+  .skill-carousel-content {
+    margin-left: var(--margin-l);
   }
 
   #footer .logo-link {
@@ -656,6 +677,10 @@ p a:hover::selection {
     justify-content: flex-start;
     text-align: left;
   }
+  
+#asterisk {
+  place-self: flex-start;
+}
 
   #arrow-hero {
     bottom: 60px;
@@ -667,7 +692,7 @@ p a:hover::selection {
 
   .skill-carousel-navigation {
     width: 100%;
-    margin-left: 32px;
+    margin-left: 16px;
     justify-content: left;
   }
 
@@ -796,7 +821,7 @@ p a:hover::selection {
   }
 
   #arrow-hero {
-    bottom: 16px;
+    bottom: 30px;
   }
 
   .stroke-text {

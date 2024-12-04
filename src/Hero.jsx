@@ -10,7 +10,8 @@ export default function Hero() {
     const [intro, setIntro] = useState("Hi, my name is");
     const introLines = ["I'm a", "I'm a", "Hi, my name is", "Born and raised in", "I'm also a"];
     const [lockIntro, setLockIntro] = useState(2);
-    const asterisk = document.getElementById('asterisk');
+    const [showAsterisk, setShowAsterisk] = useState(false);
+    const [showArrow, setShowArrow] = useState(true);
     const arrowTarget = document.getElementById('about');
 
     const handleHeroLines = (id) => {
@@ -22,14 +23,10 @@ export default function Hero() {
         line.classList.add('stroke-text-active');
         setIntro(introLines[id]);
 
-        try {
-            if (id === 4) {
-                asterisk.style.visibility = "visible";
-            } else {
-                asterisk.style.visibility = "hidden";
-            }
-        } catch {
-            // Prevents "Uncaught TypeError: Cannot read properties of null (reading 'style')" error in console
+        if (id === 4) {
+            setShowAsterisk(true);
+        } else {
+            setShowAsterisk(false);
         }
     };
 
@@ -50,17 +47,9 @@ export default function Hero() {
             parallax.forEach(e => {
                 e.style.transform = `translateY(${scrollPosition * 0.3}px)`;
             })
-            if (scrollPosition > 50) {
+            if (scrollPosition > 50 && !userScrolled) {
                 userScrolled = true;
-                try {
-                    arrow.style.opacity = 0;
-                    arrow.style.transform = "translateY(-100%)";
-                    this.setTimeout(() => {
-                        arrow.style.display = "none";
-                    }, 500);
-                } catch {
-                    // Prevents a console error
-                }
+                setShowArrow(false);
             }
         }
         window.addEventListener('scroll', parallaxScroll);
@@ -82,9 +71,9 @@ export default function Hero() {
                 <div className="stroke-text stroke-text-active" id="hero-line-2"><div className="span-wrapper" onMouseOver={() => handleHeroLines(2)} onClick={() => handleHeroClick(2)}><span>TEPPO SAARIKOSKI</span></div></div>
                 <div className="stroke-text" id="hero-line-3"><div className="span-wrapper" onMouseOver={() => handleHeroLines(3)} onClick={() => handleHeroClick(3)}><span>HELSINKI, FINLAND</span></div></div>
                 <div className="stroke-text" id="hero-line-4"><div className="span-wrapper" onMouseOver={() => handleHeroLines(4)} onClick={() => handleHeroClick(4)}><span>PRETTY COOL DUDE*</span></div></div>
-                <div id="asterisk">* according to my mom and others</div>
+                <div id="asterisk" style={{ visibility: showAsterisk ? "visible" : "hidden" }}>* according to my mom and others</div>
             </div>
-            <Arrow id="arrow-hero" target={arrowTarget} />
+            <Arrow id="arrow-hero" target={arrowTarget} showArrow={showArrow} />
             <img src={Background} id="hero-bg" alt="" className="hero-img ns" />
         </div>
     );

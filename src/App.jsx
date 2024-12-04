@@ -19,14 +19,18 @@ export default function App() {
 
   useEffect(() => {
     const loadData = async () => {
-      const pagesResponse = await fetch('https://www.tepposaarikoski.fi/wp/wp-json/wp/v2/pages');
-      const projectsResponse = await fetch('https://www.tepposaarikoski.fi/wp/wp-json/wp/v2/posts');
+      const [pagesResponse, projectsResponse] = await Promise.all([
+        fetch('https://www.tepposaarikoski.fi/wp/wp-json/wp/v2/pages'),
+        fetch('https://www.tepposaarikoski.fi/wp/wp-json/wp/v2/posts')
+      ]);
       if (!pagesResponse.ok || !projectsResponse.ok) {
         console.log("something went wrong :(");
         return;
       }
-      const pages = await pagesResponse.json();
-      const projects = await projectsResponse.json();
+      const [pages, projects] = await Promise.all([
+        pagesResponse.json(),
+        projectsResponse.json()
+      ]);
       setPages(pages);
       setProjects(projects);
 

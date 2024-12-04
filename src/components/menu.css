@@ -17,6 +17,7 @@
 .menu-background.open {
   background-color: rgba(0, 0, 0, .7);
   pointer-events: all;
+  visibility: visible;
 }
 
 .menu-wrapper {
@@ -71,6 +72,9 @@
   align-items: center;
 }
 
+.menu-content.hide {
+}
+
 .menu-logo-wrapper {
   width: 100%;
 }
@@ -120,16 +124,22 @@
 }
 
 .menu-icon-wrapper {
+  width: 100%;
+  pointer-events: none;
+  height: 100px;
   position: fixed;
   z-index: 5;
-  right: 50px;
-  top: 50px;
+  text-align: center;
 }
 
 #menu-icon {
   width: 36px;
   height: 27px;
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 50px;
+  margin: auto;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -139,6 +149,7 @@
   -o-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   cursor: pointer;
+  pointer-events: all;
 }
 
 #menu-icon span {

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import Logo from "./Logo.jsx";
 import Nav from "./Nav.jsx";
 import SomeIconRow from "./SomeIconRow.jsx";
@@ -8,33 +7,19 @@ import Icon_Email from "/assets/contact_email.svg";
 import Icon_Phone from "/assets/contact_phone.svg";
 import "./menu.css";
 
-export default function Menu(props) {
+export default function Menu() {
 
     const [menuState, setMenuState] = useState(false);
-    const icon = document.getElementById("menu-icon");
-    const menu = document.getElementById("drawer");
-    const menuBackground = document.getElementById("menu-bg");
-    const menuBorder = document.getElementById("menu-border");
-    const menuWrapper = document.getElementById("menu-wrapper");
 
     const openMenu = () => {
-        icon.classList.add('open');
-        menu.classList.add('open');
-        menuBorder.classList.add('open');
-        menuBackground.classList.add('open');
-        menuBackground.style.visibility = "visible";
-    }
+        setMenuState(true);
+    };
 
     const closeMenu = () => {
-        icon.classList.remove('open');
-        menu.classList.remove('open');
-        menuBorder.classList.remove('open');
-        menuBackground.classList.remove('open');
         setMenuState(false);
-    }
+    };
 
     const toggleMenu = () => {
-        setMenuState(!menuState);
         if (!menuState) {
             openMenu();
         } else {
@@ -45,7 +30,7 @@ export default function Menu(props) {
     return (
         <div>
             <div className="menu-icon-wrapper">
-                <div id="menu-icon" onClick={() => toggleMenu()}>
+                <div id="menu-icon" onClick={() => toggleMenu()} className={`${(menuState) ? "open" : ""}`}>
                     <span></span>
                     <span></span>
                     <span></span>
@@ -53,11 +38,11 @@ export default function Menu(props) {
                 </div>
             </div>
             <div id="menu-wrapper" className="menu-wrapper">
-                <div id="menu-border" className="drawer-border">
+                <div id="menu-border" className={`drawer-border ${(menuState) ? "open" : ""}`}>
 
                 </div>
-                <div id="drawer" className="drawer-menu">
-                    <div className="menu-content">
+                <div id="drawer" className={`drawer-menu ${(menuState) ? "open" : ""}`}>
+                    <div className={`menu-content ${(!menuState) ? "hide" : ""}`}>
                         <div className="menu-logo-wrapper">
                             <Logo closeMenu={closeMenu} />
                         </div>
@@ -70,7 +55,7 @@ export default function Menu(props) {
                     </div>
                 </div>
             </div>
-            <div id="menu-bg" className="menu-background" onClick={() => closeMenu()}>
+            <div id="menu-bg" className={`menu-background ${(menuState) ? "open" : ""}`} onClick={() => closeMenu()}>
             </div>
         </div>
     )
